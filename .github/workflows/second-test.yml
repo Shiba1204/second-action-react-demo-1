@@ -1,0 +1,17 @@
+name: sesond test project
+on: push
+jobs: 
+  test: 
+    runs-on: ubuntu-latest
+    steps: 
+      - name: get code from github repository to ubuntu machine
+        uses: actions/cheout@V3
+      - name: install node js
+        uses: actions/setup-node@V3
+        with:
+          node-version: '18'
+      - name: install dependancy
+        run: npm ci
+      - name: run test
+        run: run test        
+      
