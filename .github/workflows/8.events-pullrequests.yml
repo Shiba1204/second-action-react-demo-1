@@ -1,8 +1,10 @@
 name: pullrequests events
 on:
+  push:
   pull_request: 
     types:
       - opened
+      - edited
   workflow_dispatch:
 jobs:
   deploy:
