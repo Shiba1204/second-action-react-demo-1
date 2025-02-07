@@ -1,0 +1,22 @@
+name: pullrequests events
+on:
+  pull-requests: 
+    types:
+      - opened
+  workflow-dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: output event data
+        run: echo "${{ toJSON(GITHUB.EVENT) }}"
+      - name: Get code
+        run: actions/checkout@v3
+      - name: Install dependancies  
+        run: npm ci
+      - name: Test code
+        run: npm run test
+      - name: Build code
+        run: npm run build
+      - name: Deploy project
+        run: echo "Deploying..." 
