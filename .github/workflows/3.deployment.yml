@@ -16,6 +16,7 @@ jobs:
         run: npm test
   deploy:
     runs-on: ubuntu-latest
+    steps:
       - name: Get code
         uses: actions/chekout@v3
       - name: Install NodeJS
@@ -28,4 +29,3 @@ jobs:
         run: npm run Build
       - name: Deploy
         run: echo "Deploying..."
-                           
