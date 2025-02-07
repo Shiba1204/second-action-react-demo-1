@@ -1,5 +1,5 @@
 name: Deploy project sequential
-on: push
+on: [push, workflow_dispatch]        #5.added [push, workflow_dispatch] for multiple trigger manual and auto
 jobs:
   test:
     runs-on: ubuntu-latest
