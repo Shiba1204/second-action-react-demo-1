@@ -1,4 +1,4 @@
-name: Deploy project parallel
+name: 3.Deploy project parallel
 on: push
 jobs:
   test:

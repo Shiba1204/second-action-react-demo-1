@@ -1,4 +1,4 @@
-name: sesond test project
+name: 2.sesond test project
 on: push
 jobs:
   test:

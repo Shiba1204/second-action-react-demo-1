@@ -1,4 +1,4 @@
-name: Output_information Expressions
+name: 6.Output_information Expressions
 on: workflow_dispatch
 jobs:
   info:

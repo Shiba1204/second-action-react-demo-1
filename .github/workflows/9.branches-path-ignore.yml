@@ -1,11 +1,22 @@
-name: 8.pullrequests events
+name: 9.branches-path-ignore
 on:
   pull_request: 
     types:
       - opened
-      - edited
-      - reopened
+    branches:
+      - main
+      - dev
+      - 'dev-*'  # ex- dev-new ,dev-this-is-new
+      - 'feat/**'  #feat/new , feat/new/botton
   workflow_dispatch:
+  push:
+    branches:
+      - main
+      - dev
+      - 'dev-*'   # ex -- dev-new , dev-feature
+      - 'feat/**'  # ex  -- feat/new , feat/newfeatue
+    #path-ignore:
+    #  - '.github/workflow/*'  
 jobs:
   deploy:
     runs-on: ubuntu-latest

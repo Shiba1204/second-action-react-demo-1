@@ -1,4 +1,4 @@
-name: Handle issue
+name: 7.Handle issue
 on: issues              #run when an issue we have created manually
 jobs: 
   output-info:
