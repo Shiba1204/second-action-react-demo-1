@@ -1,4 +1,4 @@
-name: 11.skip ci action   #  git commit -m "added commits [skip action]"
+name: 11.skip ci action   #  git commit -m "added commits [skip actions]"
 on:
   workflow_dispatch:
     inputs:
