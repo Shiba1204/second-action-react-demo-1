@@ -2,7 +2,7 @@ name: 9.branches-path-ignore
 on:
   #pull_request: 
    # types:
-      - opened
+    #  - opened
     #branches:
     #  - main
     #  - dev
