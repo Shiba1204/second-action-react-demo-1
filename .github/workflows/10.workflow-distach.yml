@@ -30,12 +30,12 @@ on:
   #workflow_dispatch:
   #  - main
   #  - dev
-  #push:
-  #  branches:
-  #    - main
-  #    - dev
-  #    - 'dev-*'   # ex -- dev-new , dev-feature
-  #    - 'feat/**'  # ex  -- feat/new , feat/newfeatue
+  push:
+    branches:
+      - main
+      - dev
+      - 'dev-*'   # ex -- dev-new , dev-feature
+      - 'feat/**'  # ex  -- feat/new , feat/newfeatue
     path-ignore:
       - '.github/workflow/*'  
 jobs:
