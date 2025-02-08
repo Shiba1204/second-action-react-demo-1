@@ -9,6 +9,9 @@ on:
     #  - 'dev-*'  # ex- dev-new ,dev-this-is-new
     #  - 'feat/**'  #feat/new , feat/new/botton
   workflow_dispatch:
+    baranches:
+      - main
+      - dev
   push:
     branches:
       - main
