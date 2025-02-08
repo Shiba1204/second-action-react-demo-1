@@ -1,0 +1,56 @@
+name: 13.download artifact
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:   
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        run: npm ci
+      #- name: Lint code
+      #  run: npm run lint  
+      - name: Run tests
+        run: npm test
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'  
+      - name: Install dependencies
+        run: npm ci
+      - name: build website
+        run: npm run build
+      - name: upload artifacts
+        uses: actions/upload-artifact@v4          #Artifact upload
+        with:
+          name: dist-files
+          path: dist
+          #path: |
+          #  dist
+          #  package.json           
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get build artifacts
+        uses: actions/download-artifact@v3             #download artifact v3
+          with:
+            name: dist-files
+      - name: output contect                            # see the contest
+        uses: ls    
+      - name: Deploy
+        run: echo "Deploying..."
