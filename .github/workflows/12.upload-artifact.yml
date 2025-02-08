@@ -38,7 +38,7 @@ jobs:
         uses: actions/upload-artifact@v4          #Artifact upload
         with:
           name: dist-files
-          path:
+          path: |
             dist
             package.json           
   deploy:
