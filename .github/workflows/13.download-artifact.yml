@@ -50,7 +50,7 @@ jobs:
         uses: actions/download-artifact@v3             #download artifact v3
           with:
             name: dist-files
-      - name: output contects                           # see the contest
+      - name: output contents                           # see the contents
         run: ls    
       - name: Deploy
         run: echo "Deploying..."
