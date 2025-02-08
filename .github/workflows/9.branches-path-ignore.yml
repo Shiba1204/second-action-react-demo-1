@@ -1,6 +1,5 @@
 name: 9.branches-path-ignore
 on:
-  workflow_dispatch:
   pull_request: 
     types:
       - opened
@@ -9,6 +8,7 @@ on:
       - dev
       - 'dev-*'  # ex- dev-new ,dev-this-is-new
       - 'feat/**'  #feat/new , feat/new/botton
+  workflow_dispatch:
   push:
     branches:
       - main
