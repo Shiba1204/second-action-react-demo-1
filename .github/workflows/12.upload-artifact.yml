@@ -1,7 +1,8 @@
 name: 12.upload artifact
 on:
-  branches:
-    - main
+  push:
+    branches:
+      - main
 jobs:
   test:
     runs-on: ubuntu-latest
