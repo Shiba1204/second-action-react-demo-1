@@ -1,0 +1,56 @@
+name: 9.branches-path-ignore-copy
+on:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+        type: choice
+        options:
+        - info
+        - warning
+        - debug
+      tags:
+        description: 'Test scenario tags'
+        required: false
+        type: boolean
+      environment:
+        description: 'Environment to run tests against'
+        type: environment
+        required: true
+  #pull_request: 
+  #  types:
+  #    - opened
+  #  branches:
+  #    - main
+  #    - dev
+  #    - 'dev-*'  # ex- dev-new ,dev-this-is-new
+  #    - 'feat/**'  #feat/new , feat/new/botton
+  #workflow_dispatch:
+  #  - main
+  #  - dev
+  #push:
+  #  branches:
+  #    - main
+  #    - dev
+  #    - 'dev-*'   # ex -- dev-new , dev-feature
+  #    - 'feat/**'  # ex  -- feat/new , feat/newfeatue
+    #path-ignore:
+    #  - '.github/workflow/*'  
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: output event data
+        run: echo "${{ toJSON(GITHUB.EVENT) }}"
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm ci
+      - name: Test code
+        run: npm run test
+      - name: build Project
+        run: npm run build
+      - name: Deploy project
+        run: echo "Deploying..."
