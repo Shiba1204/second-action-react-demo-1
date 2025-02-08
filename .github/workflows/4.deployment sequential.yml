@@ -1,4 +1,4 @@
-name: Deploy project sequential
+name: 4.Deploy project sequential
 on: push
 jobs:
   test:

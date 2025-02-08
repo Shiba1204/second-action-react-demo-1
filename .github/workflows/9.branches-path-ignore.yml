@@ -1,4 +1,4 @@
-name: branches-path-ignore
+name: 9.branches-path-ignore
 on:
   pull_request: 
     types:
@@ -12,11 +12,11 @@ on:
   push:
     branches:
       - main
-      #- dev
+      - dev
       - 'dev-*'   # ex -- dev-new , dev-feature
       - 'feat/**'  # ex  -- feat/new , feat/newfeatue
-    #path-ignore:
-    #  - '.github/workflow/*'  
+    path-ignore:
+      - '.github/workflow/*'  
 jobs:
   deploy:
     runs-on: ubuntu-latest
