@@ -1,5 +1,5 @@
-name: 9.branches-path-ignore
-on:
+name: 9.branches-path-ignore-copy
+on: workflow_dispatch
   #pull_request: 
   #  types:
   #    - opened
@@ -8,15 +8,15 @@ on:
   #    - dev
   #    - 'dev-*'  # ex- dev-new ,dev-this-is-new
   #    - 'feat/**'  #feat/new , feat/new/botton
-  workflow_dispatch:
-    - main
-    - dev
-  push:
-    branches:
-      - main
-      - dev
-      - 'dev-*'   # ex -- dev-new , dev-feature
-      - 'feat/**'  # ex  -- feat/new , feat/newfeatue
+  #workflow_dispatch:
+  #  - main
+  #  - dev
+  #push:
+  #  branches:
+  #    - main
+  #    - dev
+  #    - 'dev-*'   # ex -- dev-new , dev-feature
+  #    - 'feat/**'  # ex  -- feat/new , feat/newfeatue
     #path-ignore:
     #  - '.github/workflow/*'  
 jobs:
