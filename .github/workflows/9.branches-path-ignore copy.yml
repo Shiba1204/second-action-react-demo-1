@@ -1,6 +1,5 @@
 name: 9.branches-path-ignore-copy
 on:
-on:
   workflow_dispatch:
     inputs:
       logLevel:
