@@ -1,4 +1,4 @@
-name: 13.download artifact
+name: 14.job output
 on:
   push:
     branches:
@@ -23,7 +23,7 @@ jobs:
   build:
     needs: test
     runs-on: ubuntu-latest
-    output:
+    outputs:
       script-file: ${{ steps.publish.outputs.script-file }}       # id = publish (can be any name)
     steps:
       - name: Get code
