@@ -1,4 +1,4 @@
-name: 10.workflow dispatch added
+name: 11.skip ci action   #  git commit -m "added commits [skip actions]"
 on:
   workflow_dispatch:
     inputs:
@@ -51,3 +51,4 @@ jobs:
         run: npm run build
       - name: Deploy project
         run: echo "Deploying..."
+#skip commit added        

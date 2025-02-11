@@ -1,0 +1,74 @@
+name: 15.cache dependancies
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:   
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: cache dependencies                # Added the cache dependencies to reduce the buil time
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: deps-node-modules-${{ hashfiles('**/package-lock.json') }}    
+      - name: Install dependencies
+        run: npm ci
+      #- name: Lint code
+      #  run: npm run lint  
+      - name: Run tests
+        run: npm test
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    #outputs:
+    #  script-file: ${{ steps.publish.outputs.script-file }}       # This line is failing 
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: deps-node-modules-${{ hashfiles('**/package-lock.json') }}           
+      - name: Install dependencies
+        run: npm ci
+      - name: build website
+        run: npm run build
+      #- name: publish JS filename
+      #  id: publish
+      #  run: find dist/assets/*.JS -type f -execdir echo 'script-file={}' >> $GITHUB_OUTPUT ';'  # this line is failing
+      - name: upload artifacts
+        uses: actions/upload-artifact@v4       
+        with:
+          name: dist-files
+          path: dist
+          #path: |
+          #  dist
+          #  package.json           
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get build artifacts
+        uses: actions/download-artifact@v4        
+        with:
+            name: dist-files
+      - name: output contents                          
+        run: ls
+      #- name: Output filename
+      #  run: echo "${{ needs.build.outputs.script-file }}"  #this line is failing
+      - name: Deploy
+        run: echo "Deploying..."
+#C:\Users\Admin\Documents\GitHub\second-action-react-demo-1
